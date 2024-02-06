@@ -19,3 +19,27 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 //// Top-leverl Await (ES 2022)
+
+// console.log("Start Fetching ");
+// let res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+// let data = await res.json();
+// console.log(data);
+
+// console.log("It's something after the fetch data");
+
+let getLastPost = async function () {
+  let res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  let data = await res.json();
+  //   console.log (data);
+
+  return { title: data.at(-1).title, body: data.at(-1).body };
+};
+
+let lastPost = getLastPost();
+console.log(lastPost);
+
+// Not very clean
+// lastPost.then((last) => console.log(last));
+
+let lastPost2 = await getLastPost();
+console.log(lastPost2);
