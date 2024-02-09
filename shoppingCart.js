@@ -1,20 +1,28 @@
-// // Exporting module
+// Exporting module
 // console.log("Exporting module");
 
-// let shoppingCost = 10;
-// export let cart = [];
+// blocking code
+// console.log("Start fetching ");
+// await fetch(`https://jsonplaceholder.typicode.com/posts`);
+// console.log("It's something after the fetch data");
 
-// export let addToCart = function (product, quantity) {
-//   cart.push({ product, quantity });
-//   console.log(`${quantity} ${product} added to the cart `);
-// };
+let shoppingCost = 10;
+export let cart = [];
 
-// let totalPrice = 2342;
-// let totalQunatity = 23;
+//// Named export (Always in top leverl of the module)
+export let addToCart = function (product, quantity) {
+  cart.push({ product, quantity });
+  // console.log(`${quantity} ${product} added to the cart `);
+};
 
-// export { totalPrice, totalQunatity as qt };
+let totalPrice = 2342;
+let totalQunatity = 23;
 
-// export default function (product, quantity) {
-//   cart.push({ product, quantity });
-//   console.log(`${quantity} ${product} added to the cart `);
-// }
+// change the default export
+export { totalPrice, totalQunatity as qt };
+
+//// Default export
+export default function (product, quantity) {
+  cart.push({ product, quantity });
+  // console.log(`${quantity} ${product} added to the cart `);
+}
