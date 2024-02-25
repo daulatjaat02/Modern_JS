@@ -1,3 +1,27 @@
+// Importing module
+// import { addToCart, totalPrice as price, qt } from './shoppingCart.js'
+
+// Importing Everything 
+
+// console.log('Importing module')
+// // console.log(shippingCost) //
+
+// addToCart('S24', 5)
+// console.log(price, qt)
+
+// import * as ShoppingCart from './shoppingCart.js'
+// ShoppingCart.addToCart('Harles', 12)
+
+// console.log(ShoppingCart.totalPrice, ShoppingCart.qt)
+
+// import defaults
+import add, { cart } from './shoppingCart.js'
+add('Bullets', 3)
+add('Harles', 5)
+add('Himalayas', 2)
+
+console.log(cart)
+
 
 
 
