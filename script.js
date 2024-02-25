@@ -5,8 +5,8 @@ import { addToCart, totalPrice as price, qt } from "./shoppingCart.js";
 
 addToCart("Private Jets", 5);
 // importing the changed value from default export
-// console.log(price, qt);
-// console.log("Importing module");
+console.log(price, qt);
+console.log("Importing module");
 
 // Importing the changed value from default export (differently)
 import * as ShoppingCart from "./shoppingCart.js";
@@ -26,26 +26,23 @@ add("9zPC", 10);
 //// 2. It blocks the execution of the module (not just this module but all modules imported)
 
 // console.log("Start fetching ");
-let res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
-let data = await res.json();
+// let res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+// let data = await res.json();
 // console.log(data);
 // console.log("It's something after the fetch data");
 
 let getLastPost = async function () {
   let res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
   let data = await res.json();
-  // console.log(data);
+  console.log(data);
 
   return { title: data.at(-1).title, body: data.at(-1).body };
 };
 let lastPost = getLastPost();
-// console.log(lastPost); // Promise { <pending> }
+console.log(lastPost); // Promise { <pending> }
 
 // Not very clean
 // getLastPost().then((last) => console.log(last));
-
-// let lastPost2 = await getLastPost();
-// console.log(lastPost2);
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -75,11 +72,11 @@ let shoppingCart2 = (function () {
   };
 })();
 
-// shoppingCart2.addToCart("iphones", 3); //  3 iphones added to the cart (Shipping cost is 10)
-// shoppingCart2.addToCart("samsung", 2); //  2 samsung added to the cart (Shipping cost is 10)
-// console.log(shoppingCart2); // { cart: [ { product: 'iphones', quantity: 3 }, { product: 'samsung', quantity: 2 } ], totalPrice: 234, totalQunatity: 23 }
-// console.log(shoppingCart2.cart);
-// console.log(shoppingCart2.shippingCost); // undefined
+shoppingCart2.addToCart("iphones", 3); //  3 iphones added to the cart (Shipping cost is 10)
+shoppingCart2.addToCart("samsung", 2); //  2 samsung added to the cart (Shipping cost is 10)
+console.log(shoppingCart2); // { cart: [ { product: 'iphones', quantity: 3 }, { product: 'samsung', quantity: 2 } ], totalPrice: 234, totalQunatity: 23 }
+console.log(shoppingCart2.cart);
+console.log(shoppingCart2.shippingCost); // undefined
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -103,7 +100,7 @@ let shoppingCart2 = (function () {
 // ///////////////////////////////////////////////////////////////////////
 
 ///// NPM :
-import cloneDeep from "./node_modules/lodash-es/cloneDeep.js";
+import cloneDeep from "lodash-es";
 
 let state = {
   cart: [
@@ -115,7 +112,35 @@ let state = {
 // let stateClone = Object.assign({}, state);
 // state.user.loggedIn = false;
 // console.log(stateClone);
-
 let stateClone = cloneDeep(state);
 state.user.loggedIn = false;
-console.log(stateClone); // loggedIn is still true
+console.log(stateClone);
+
+//// Hot module : It'll help to not reload the page (only in parcel)
+if (module.hot) {
+  module.hot.accept();
+}
+
+// Let's see how the ES6 class work in ES5 (Babel)
+class Person {
+  #greeting = "Hello";
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.#greeting}, ${this.name}`);
+  }
+}
+let daulat = new Person("Daulat");
+console.log("Daulat" ?? null);
+
+// Like these new features in ES6 can't be used in ES5 thatswhy we have to use polyfill
+console.log(cart.find((el) => el.quantity >= 2));
+Promise.resolve("This is resolved Promise").then((data) => console.log(data));
+
+import "core-js"; // It will polyfill the all features
+
+// for specific
+// import "core-js/stable/array/find";
+// import "core-js/stable/Promise";
+
+//// polyfill for async functions
+import "regenerator-runtime/runtime.js";

@@ -1,5 +1,5 @@
 // Exporting module
-// console.log("Exporting module");
+console.log("Exporting module");
 
 // blocking code
 // console.log("Start fetching ");
@@ -12,7 +12,7 @@ export let cart = [];
 //// Named export (Always in top leverl of the module)
 export let addToCart = function (product, quantity) {
   cart.push({ product, quantity });
-  // console.log(`${quantity} ${product} added to the cart `);
+  console.log(`${quantity} ${product} added to the cart `);
 };
 
 let totalPrice = 2342;
@@ -24,5 +24,5 @@ export { totalPrice, totalQunatity as qt };
 //// Default export
 export default function (product, quantity) {
   cart.push({ product, quantity });
-  // console.log(`${quantity} ${product} added to the cart `);
+  console.log(`${quantity} ${product} added to the cart `);
 }
