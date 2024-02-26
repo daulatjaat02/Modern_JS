@@ -1,28 +1,91 @@
-// Importing module
-// import { addToCart, totalPrice as price, qt } from './shoppingCart.js'
+// # script.js
 
-// Importing Everything 
+// Importing module
 
 // console.log('Importing module')
-// // console.log(shippingCost) //
+// // Importing Named export module
+// import { addToCart, totalPrice as price, qt } from './shoppingCart.js'
+// console.log(shippingCost) // Error shippingCost is not defined
 
-// addToCart('S24', 5)
-// console.log(price, qt)
+// addToCart('S24', 5) // 5 S24 added to the cart
 
+// // importing the changed value from default export
+// console.log(price, qt) // 2300 7
+
+// Importing Everything 
 // import * as ShoppingCart from './shoppingCart.js'
 // ShoppingCart.addToCart('Harles', 12)
 
 // console.log(ShoppingCart.totalPrice, ShoppingCart.qt)
 
 // import defaults
-import add, { cart } from './shoppingCart.js'
-add('Bullets', 3)
-add('Harles', 5)
-add('Himalayas', 2)
+import add, { cart, totalPrice } from './shoppingCart.js'
+add('Bullets', 3);
+add('Harles', 5);
+add('Himalayas', 2);
 
-console.log(cart)
+console.log(cart);
 
+//////////////////////////////////////////////////////////////////////////
 
+// Top - Level Await
+
+// const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+// const data = await res.json();
+// console.log(data)
+// console.log('Something after the fetch API')
+
+// const getLastPost = async function () {
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+//   const data = await res.json();
+//   // console.log(data);
+
+//   return { title: data.at(-1).title, text: data.at(-1).body }
+// };
+
+// const lastPost = getLastPost();
+// console.log(lastPost);
+
+// // It is not very clean way
+// // lastPost.then(last => console.log(last))
+
+// const lastPost2 = await getLastPost();
+// console.log(lastPost2);
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Module Pattern
+
+const shoppingCart2 = (function () {
+  const cart = [];
+  const shippingCost = 23;
+  const totalPrice = 237;
+  const totalQunatity = 23;
+
+  const addToCart = function (product, quantity) {
+    cart.push({ product, quantity });
+    console.log(`${quantity} ${product} added to cart `);
+  };
+
+  const orderStock = function (product, quantity) {
+    console.log(`${quantity} ${product} ordered from supplier`);
+  };
+
+  return {
+    addToCart,
+    cart,
+    totalPrice,
+    totalQunatity
+  }
+})();
+
+shoppingCart2.addToCart('CPU', 5);
+shoppingCart2.addToCart('Laptop', 8);
+shoppingCart2.addToCart('Lights', 15);
+
+// shoppingCart2.orderStock('CPU', 2); // Type Error
+console.log(shoppingCart2); // 
+console.log(shoppingCart2.shippingCost); // undefined
 
 
 
@@ -64,17 +127,18 @@ console.log(cart)
 // import { addToCart, totalPrice as price, qt } from "./shoppingCart.js";
 
 // addToCart("Private Jets", 5);
-// // importing the changed value from default export
+
+// // // importing the changed value from default export
 // console.log(price, qt);
 // console.log("Importing module");
 
 // // Importing the changed value from default export (differently)
 // import * as ShoppingCart from "./shoppingCart.js";
 // ShoppingCart.addToCart("Bugati", 10);
-// // console.log(ShoppingCart.totalPrice);
-// // console.log(ShoppingCart.qt);
+// console.log(ShoppingCart.totalPrice);
+// console.log(ShoppingCart.qt);
 
-// // Importing default export
+// // // Importing default export
 // import add, { cart } from "./shoppingCart.js";
 // add("9zPC", 10);
 // console.log(cart);
