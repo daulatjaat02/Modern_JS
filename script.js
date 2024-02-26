@@ -98,6 +98,9 @@ console.log(shoppingCart2.shippingCost); // undefined
 
 /////////////////////////////////////////////////////////////////////////////////////
 
+import 'core-js/stable';
+import 'regenerator-runtime';
+
 
 
 
