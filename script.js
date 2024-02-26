@@ -87,6 +87,17 @@ shoppingCart2.addToCart('Lights', 15);
 console.log(shoppingCart2); // 
 console.log(shoppingCart2.shippingCost); // undefined
 
+////////////////////////////////////////////////////////////////////////////////////
+
+// Common Js
+// Export
+// export.addToCart = function () {...........};
+
+// import
+// const { addToCart } = require('./shoppingCart.js');
+
+/////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
