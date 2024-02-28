@@ -120,6 +120,32 @@ console.log(evenDouble); // [4, 8, 12]
 const evenDoubleDe = num.filter(num => num % 2 === 0).map(num => num * 2);
 console.log(evenDoubleDe); // [4, 8, 12]
 
+// Principles of Functional Programming :
+
+// 1. Immutability :
+
+const numbers = [1, 2, 3, 4, 5];
+
+const newNumbers = [...numbers, 6, 7, 8];
+console.log(numbers, newNumbers);  //  [1, 2, 3, 4, 5]  [1, 2, 3, 4, 5, 6, 7, 8]
+
+const newNumber2 = numbers.map(num => num === 3 ? 10 : num);
+
+console.log(numbers, newNumber2); //  [1, 2, 3, 4, 5]  [1, 2, 10, 4, 5]
+
+// 2. Higher Order functions
+
+const multiplier = function (factor) {
+  return function (x) {
+    return factor * x;
+  };
+};
+
+const double = multiplier(2);
+const triple = multiplier(3);
+
+console.log(double(12)); // 24
+console.log(triple(5)); // 15
 
 
 
