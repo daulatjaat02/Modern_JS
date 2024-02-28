@@ -18,15 +18,15 @@
 
 // console.log(ShoppingCart.totalPrice, ShoppingCart.qt)
 
-// import defaults
-import add, { cart, totalPrice } from './shoppingCart.js'
-add('Bullets', 3);
-add('Harles', 5);
-add('Himalayas', 2);
+// // import defaults
+// import add, { cart, totalPrice } from './shoppingCart.js'
+// add('Bullets', 3);
+// add('Harles', 5);
+// add('Himalayas', 2);
 
-console.log(cart);
+// console.log(cart);
 
-//////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////
 
 // Top - Level Await
 
@@ -56,36 +56,36 @@ console.log(cart);
 
 // Module Pattern
 
-const shoppingCart2 = (function () {
-  const cart = [];
-  const shippingCost = 23;
-  const totalPrice = 237;
-  const totalQunatity = 23;
+// const shoppingCart2 = (function () {
+//   const cart = [];
+//   const shippingCost = 23;
+//   const totalPrice = 237;
+//   const totalQunatity = 23;
 
-  const addToCart = function (product, quantity) {
-    cart.push({ product, quantity });
-    console.log(`${quantity} ${product} added to cart `);
-  };
+//   const addToCart = function (product, quantity) {
+//     cart.push({ product, quantity });
+//     console.log(`${quantity} ${product} added to cart `);
+//   };
 
-  const orderStock = function (product, quantity) {
-    console.log(`${quantity} ${product} ordered from supplier`);
-  };
+//   const orderStock = function (product, quantity) {
+//     console.log(`${quantity} ${product} ordered from supplier`);
+//   };
 
-  return {
-    addToCart,
-    cart,
-    totalPrice,
-    totalQunatity
-  }
-})();
+//   return {
+//     addToCart,
+//     cart,
+//     totalPrice,
+//     totalQunatity
+//   }
+// })();
 
-shoppingCart2.addToCart('CPU', 5);
-shoppingCart2.addToCart('Laptop', 8);
-shoppingCart2.addToCart('Lights', 15);
+// shoppingCart2.addToCart('CPU', 5);
+// shoppingCart2.addToCart('Laptop', 8);
+// shoppingCart2.addToCart('Lights', 15);
 
-// shoppingCart2.orderStock('CPU', 2); // Type Error
-console.log(shoppingCart2); // 
-console.log(shoppingCart2.shippingCost); // undefined
+// // shoppingCart2.orderStock('CPU', 2); // Type Error
+// console.log(shoppingCart2); // 
+// console.log(shoppingCart2.shippingCost); // undefined
 
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -98,9 +98,27 @@ console.log(shoppingCart2.shippingCost); // undefined
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-import 'core-js/stable';
-import 'regenerator-runtime';
+// import 'core-js/stable';
+// import 'regenerator-runtime';
 
+////////////////////////////////////////////////////////////////////////////////////
+
+// functional / Declarative Programming :
+
+// Imperative
+const num = [1, 2, 3, 4, 5, 6];
+const evenDouble = [];
+
+for (let i = 0; i < num.length; i++) {
+  if (num[i] % 2 === 0) {
+    evenDouble.push(num[i] * 2);
+  };
+};
+console.log(evenDouble); // [4, 8, 12]
+
+// Declarative 
+const evenDoubleDe = num.filter(num => num % 2 === 0).map(num => num * 2);
+console.log(evenDoubleDe); // [4, 8, 12]
 
 
 

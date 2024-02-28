@@ -1,25 +1,25 @@
-// Exporting module 
-console.log('Exporting Module')
+// Exporting module
+// console.log('Exporting Module')
 
-const shippingCost = 10;
-export const cart = [];
+// const shippingCost = 10;
+// export const cart = [];
 
-// export should be the top level (If addToCart is inside the if...else then It will not work at all.)
-export const addToCart = function (product, quantity) {
-  cart.push(product, quantity)
-  console.log(`${quantity} ${product} added to cart`)
-}
+// // export should be the top level (If addToCart is inside the if...else then It will not work at all.)
+// export const addToCart = function (product, quantity) {
+//   cart.push(product, quantity)
+//   console.log(`${quantity} ${product} added to cart`)
+// }
 
-const totalPrice = 2300;
-const totalQunatity = 7;
+// const totalPrice = 2300;
+// const totalQunatity = 7;
 
-export { totalPrice, totalQunatity as qt }
+// export { totalPrice, totalQunatity as qt }
 
-// default export 
-export default function (product, quantity) {
-  cart.push(product, quantity)
-  console.log(`${quantity} ${product} added to cart`)
-}
+// // default export
+// export default function (product, quantity) {
+//   cart.push(product, quantity)
+//   console.log(`${quantity} ${product} added to cart`)
+// }
 
 
 
